@@ -3,46 +3,38 @@ import './Menu.css';
 import ItemPopup from '../ItemPopup/ItemPopup';
 
 import arrow from '../../images/arrow.svg';
+import logo from '../../images/logo.svg';
 
-export default function Menu() {
+export default function Menu({ menuOpen }) {
+    const menuItems = ['Demos', 'Post', 'Features', 'Categories', 'Shop', 'Buy Now'];
+    const menuClassName = `menu ${menuOpen === true && 'menu_open'}`;
+
     return (
-        <ul className='menu'>
-            <li className='menu__item'>
-                <p className='menu__text'>Demos</p>
-                <img className='menu__dropdown' src={arrow} alt='раскрыть.' />
+        <article className={menuClassName}>
+            <div className='menu__content'>
+                {
+                    menuOpen === true &&
+                    <div className='menu__top'>
+                        <img className='menu__logo' src={logo} alt='логотип.' />
+                        <button className='menu__close-btn' type='button' />
+                    </div>
+                }
 
-                <ItemPopup></ItemPopup>
-            </li>
-            <li className='menu__item'>
-                <p className='menu__text'>Post</p>
-                <img className='menu__dropdown' src={arrow} alt='раскрыть.' />
+                <ul className='menu__list'>
+                    {menuItems.map((item) => (
+                        <li className='menu__item' key={item}>
+                            <p className='menu__text'>{item}</p>
+                            {item !== 'Buy Now' &&
+                                <img className='menu__dropdown' src={arrow} alt='раскрыть.' />
+                            }
 
-                <ItemPopup></ItemPopup>
-            </li>
-            <li className='menu__item'>
-                <p className='menu__text'>Features</p>
-                <img className='menu__dropdown' src={arrow} alt='раскрыть.' />
-
-                <ItemPopup></ItemPopup>
-            </li>
-            <li className='menu__item'>
-                <p className='menu__text'>Categories</p>
-                <img className='menu__dropdown' src={arrow} alt='раскрыть.' />
-
-                <ItemPopup></ItemPopup>
-            </li>
-            <li className='menu__item'>
-                <p className='menu__text'>Shop</p>
-                <img className='menu__dropdown' src={arrow} alt='раскрыть.' />
-
-                <ItemPopup></ItemPopup>
-            </li>
-            <li className='menu__item'>
-                <p className='menu__text'>Buy Now</p>
-                <img className='menu__dropdown' src={arrow} alt='раскрыть.' />
-
-                <ItemPopup></ItemPopup>
-            </li>
-        </ul>
+                            <div className='menu__popup'>
+                                <ItemPopup></ItemPopup>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </article>
     )
 }

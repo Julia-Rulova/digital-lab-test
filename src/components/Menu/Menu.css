@@ -1,14 +1,21 @@
 .menu {
     width: 100%;
+}
+
+.menu__content {
+    width: 100%;
     border-top: 1px solid #E9E9E9;
     border-bottom: 1px solid #E9E9E9;
-    padding: 20px 0;
+    padding: 1.34rem 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     list-style-type: none;
     gap: 32px;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
 }
 
 .menu__item {
@@ -24,10 +31,42 @@
     font-style: normal;
     font-weight: 500;
     line-height: 1rem;
-    margin-right: 4px;
+    margin-right: 0.25rem;
 }
 
 .menu__dropdown {
     width: 10px;
     height: 6px;
+}
+
+.menu__popup {
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu__popup:hover {
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu__item:hover .menu__popup {
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 600px) {
+    .menu {
+        display: none;
+    }
+
+    .menu_open {
+        display: flex;
+        width: 100%;
+        min-height: 100vh;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
 }
