@@ -56,6 +56,14 @@ function App() {
 
   function handleOpenMenu() {
     setOpenMenu(true);
+
+    document.body.style.overflow = 'hidden';
+  }
+
+  function handleCloseMenu() {
+    setOpenMenu(false);
+
+    document.body.style.overflow = 'unset';
   }
 
   return (
@@ -67,6 +75,7 @@ function App() {
 
       <Menu
         menuOpen={openMenu}
+        onClose={handleCloseMenu}
       ></Menu>
 
       {search &&

@@ -49,3 +49,11 @@
     height: 5px;
     transform: translate(-90deg);
 }
+
+@media screen and (max-width: 790px) {
+    .item-popup {
+        width: 100%;
+        border: none;
+        position: static;
+    }
+}

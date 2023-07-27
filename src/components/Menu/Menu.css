@@ -1,9 +1,22 @@
 .menu {
     width: 100%;
+    position: sticky;
+    top: 0;
+    transform: translateY(0);
+    transition: all 0.5s;
+}
+
+.menu_static {
+    transform: translateY(-200%);
+    transition: all 0.5s;
 }
 
 .menu__content {
     width: 100%;
+    background-color: #fff;
+}
+
+.menu__list {
     border-top: 1px solid #E9E9E9;
     border-bottom: 1px solid #E9E9E9;
     padding: 1.34rem 0;
@@ -13,17 +26,21 @@
     align-items: center;
     list-style-type: none;
     gap: 32px;
-    position: sticky;
-    top: 0;
-    background-color: #fff;
 }
 
 .menu__item {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     cursor: pointer;
     position: relative;
+}
+
+.menu__item-top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .menu__text {
@@ -40,33 +57,97 @@
 }
 
 .menu__popup {
+    visibility: hidden;
     opacity: 0;
-    transition: all 0.3s ease-in-out;
-}
-
-.menu__popup:hover {
-    opacity: 1;
-    transition: all 0.3s ease-in-out;
+    transition: visibility 0.5s, opacity 0.5s linear, transform 0.5s;
 }
 
 .menu__item:hover .menu__popup {
+    visibility: visible;
     opacity: 1;
-    transition: all 0.3s ease-in-out;
+    transition: visibility 0s, opacity 0.5s linear;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 790px) {
     .menu {
-        display: none;
+        width: 0;
+        height: 0;
+        transform: translateX(-200%);
+        transition: all 0.3s ease-in-out;
+        overflow: hidden;
     }
 
     .menu_open {
+        transform: translateX(0);
         display: flex;
         width: 100%;
         min-height: 100vh;
+        height: 100%;
         position: fixed;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
+        background-color: rgba(255, 255, 255, 0.6);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .menu__content {
+        width: 90%;
+        border-right: 1px solid #E9E9E9;
+    }
+
+    .menu__top {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 1.25rem;
+        border-bottom: 1px solid #E9E9E9;
+    }
+
+    .menu__logo {
+        width: 161.28px;
+        height: 24px;
+        object-fit: cover;
+    }
+
+    .menu__close-btn {
+        border: none;
+        background-color: transparent;
+        width: 18px;
+        height: 18px;
+        background-image: url("../../images/close.svg");
+        background-size: cover;
+        cursor: pointer;
+    }
+
+    .menu__list {
+        border: none;
+        padding: 0.84rem 1.25rem;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    .menu__item {
+        width: 100%;
+        padding: 1rem 0;
+        border-bottom: 1px solid #E9E9E9;
+    }
+
+    .menu__item:last-of-type {
+        border: none;
+    }
+
+    .menu__popup {
+        display: none;
+    }
+
+    .menu__item:hover .menu__popup {
+        width: 100%;
+        display: block;
     }
 }

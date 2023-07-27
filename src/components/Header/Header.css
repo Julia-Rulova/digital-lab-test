@@ -32,7 +32,7 @@
     display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 790px) {
     .header {
         justify-content: space-between;
         padding: 1.81rem 1.25rem 0;
